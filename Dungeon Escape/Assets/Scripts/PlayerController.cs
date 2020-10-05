@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (!AnimatorIsPlaying())
+            if (!AnimatorIsPlaying() && !(anim.GetInteger("State")==3))
             {
                 anim.SetInteger("State", 0);
             }
@@ -44,5 +44,9 @@ public class PlayerController : MonoBehaviour
     void jump()
     {
         rb.velocity = new Vector2(0, jumpforce);
+    }
+    public void death()
+    {
+        anim.SetInteger("State", 3);
     }
 }

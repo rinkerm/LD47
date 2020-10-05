@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    public float speed = 0;
-
+    public float speed = .1f;
+    public bool stop;
+    void Start()
+    {
+        stop = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Renderer>().material.mainTextureOffset = new Vector2(Time.time * speed,0f);
+        if (!stop)
+        {
+            GetComponent<Renderer>().material.mainTextureOffset = new Vector2(Time.time * speed,0f);
+        }   
+    }
+    public void stopScroll()
+    {
+        stop = true;
     }
 }
